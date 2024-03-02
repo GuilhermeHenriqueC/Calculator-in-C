@@ -20,8 +20,8 @@ scanf("%d", &num1);
 printf("\nmathematical operator(+ , - , x , /) : ");
 scanf("%c", &maths);
 
-printf("%c", maths);
 
+printf("%c", maths);
 
 //oper(maths);
 
