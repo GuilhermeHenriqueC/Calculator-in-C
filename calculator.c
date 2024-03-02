@@ -18,7 +18,7 @@ printf("First number:  ");
 scanf("%d", &num1);
 
 printf("\nmathematical operator(+ , - , x , /) : ");
-scanf("%c", &maths);
+scanf("%s", &maths);
 
 
 printf("%c", maths);
