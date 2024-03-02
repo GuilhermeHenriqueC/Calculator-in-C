@@ -1,29 +1,32 @@
 #include <stdio.h>
 
-void mutliply(int);
-void subtract(int);
-void addition(int);
-void division(int);
-void oper(char);
+void multiply(int, int);
+void subtract(int, int);
+void addition(int, int);
+void division(int, int);
+void oper(char, int, int);
 
 int main(){
     int num1 = 0;
     int num2 = 0;
     char maths;
-    int add, minus, divide, mult;
+
  
     
 
 printf("First number:  ");
 scanf("%d", &num1);
 
-printf("\nmathematical operator(+ , - , x , /) : ");
+printf("\nmathematical operator(+ , - , * , /) : ");
 scanf("%s", &maths);
 
 
-printf("%c", maths);
+printf("\nSecond number:  ");
+scanf("%d", &num2);
 
-//oper(maths);
+oper(maths, num1, num2);
+
+
 
     
 
@@ -32,31 +35,61 @@ printf("%c", maths);
     return 0;
 }
 
-void oper(char math){
+void oper(char math, int n1, int n2){
 
-int add, minus, divide, mult  = 0;
+
 
 
     switch (math)
 {
 case '+':
-    add = 1;
+    addition(n1, n2);
     break;
 
 case '-':
-    minus = 1;
+    subtract(n1, n2);
     
     break;
-case 'x':
-    mult = 1;
+case '*':
+    multiply(n1, n2);
     
     break;
 case '/':
-    divide = 1;
+    division(n1, n2);
     
     break;
 
 
-printf("%d", minus);
+
 }
+
+}
+
+void addition(int number1, int number2){
+
+int temp;
+temp = number1 + number2;
+printf("The answer is: %d", temp); 
+}
+
+void multiply(int number1, int number2){
+
+int temp;
+temp = number1 * number2;
+printf("The answer is: %d", temp);
+}
+
+void subtract(int number1, int number2){
+
+int temp;
+temp = number1 - number2;
+printf("The answer is: %d", temp);
+   
+}
+
+void division(int number1, int number2){
+
+int temp;
+temp = number1 / number2;
+printf("The answer is: %d", temp);
 }
