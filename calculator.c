@@ -7,6 +7,16 @@ Description:  Calculator with the basic operators using functions and lists to c
 
 #include <stdio.h>
 
+
+struct MixedVariable {
+    int type; // to indicate the type of variable (1 for int, 2 for float, etc.)
+    union {
+        int intValue;
+        float floatValue;
+        char charValue;
+    } value;
+};
+
 void multiply(int, int);
 void subtract(int, int);
 void addition(int, int);
@@ -21,9 +31,50 @@ int main(){
     int check, size =0;
     int i =0;
     int temp;
+    struct MixedVariable var[5];
 
+for (int i = 0; i < 5; ++i) {
+        printf("Enter the type of variable (1 for int, 2 for float, 3 for char, 4 to quit): ");
+        scanf("%d", &var[i].type);
 
+        switch (var[i].type) {
+            case 1:
+                printf("Enter an integer: ");
+                scanf("%d", &var[i].value.intValue);
+                break;
+            case 2:
+                printf("Enter a float: ");
+                scanf("%f", &var[i].value.floatValue);
+                break;
+            case 3:
+                printf("Enter a character: ");
+                scanf(" %c", &var[i].value.charValue);
+                break;
+            case 4:
+
+                break;
+            default:
+                printf("Unknown type\n");
+                break;
+        }
+    }
  
+for (int i = 0; i < 3; ++i) {
+        switch (var[i].type) {
+            case 1:
+                printf("Integer value: %d\n", var[i].value.intValue);
+                break;
+            case 2:
+                printf("Float value: %.2f\n", var[i].value.floatValue);
+                break;
+            case 3:
+                printf("Char value: %c\n", var[i].value.charValue);
+                break;
+            default:
+                printf("Unknown type\n");
+                break;
+        }
+    }
     
 
 printf("First number:  ");
@@ -37,7 +88,7 @@ scanf("%d", &num2);
 
 //oper(maths, num1, num2);
 
-while (check != 0){
+/*while (check != 0){
     scanf("%d", &check);
     list[i] = check;
     printf("%d", list[i]);
@@ -45,7 +96,7 @@ while (check != 0){
     i++;    
     
     
-}
+}*/
 
 
 
