@@ -10,6 +10,11 @@ int main(){
     int num1 = 0;
     int num2 = 0;
     char maths;
+    int list[] =  {};
+    int check, size =0;
+    int i =0;
+    int temp;
+
 
  
     
@@ -18,13 +23,23 @@ printf("First number:  ");
 scanf("%d", &num1);
 
 printf("\nmathematical operator(+ , - , * , /) : ");
-scanf("%s", &maths);
-
+scanf("%s", &maths); 
 
 printf("\nSecond number:  ");
 scanf("%d", &num2);
 
-oper(maths, num1, num2);
+//oper(maths, num1, num2);
+
+while (check != 0){
+    scanf("%d", &check);
+    list[i] = check;
+    printf("%d", list[i]);
+    size++;
+    i++;    
+    
+    
+}
+printf("\n%d", size);
 
 
 
