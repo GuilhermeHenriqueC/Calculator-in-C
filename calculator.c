@@ -1,3 +1,10 @@
+/*
+Author: William Crolla  (Guilherme Crolla)
+
+Description:  Calculator with the basic operators using functions and lists to create the equation: 
+
+*/
+
 #include <stdio.h>
 
 void multiply(int, int);
@@ -39,7 +46,7 @@ while (check != 0){
     
     
 }
-printf("\n%d", size);
+
 
 
 
