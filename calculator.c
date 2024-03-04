@@ -3,9 +3,14 @@ Author: William Crolla  (Guilherme Crolla)
 
 Description:  Calculator with the basic operators using functions and lists to create the equation: 
 
+Date: Start: 02/03/2024
+        End: 
+
 */
 
 #include <stdio.h>
+#include <string.h>
+#define MAX_SIZE 100
 
 
 struct MixedVariable {
@@ -13,8 +18,8 @@ struct MixedVariable {
     union {
         int intValue;
         float floatValue;
-        char charValue;
-    } value;
+        char operator[MAX_SIZE]; // Array to hold operator string
+        } value;
 };
 
 void multiply(int, int);
@@ -28,56 +33,59 @@ int main(){
     int num2 = 0;
     char maths;
     int list[] =  {};
-    int check, size =0;
+    int check =1;
+    int size_arr =0;
     int i =0;
     int temp;
     struct MixedVariable var[5];
 
-for (int i = 0; i < 5; ++i) {
-        printf("Enter the type of variable (1 for int, 2 for float, 3 for char, 4 to quit): ");
+for (int i = 0; i < 3; ++i) {
+        printf("Enter the type of variable (1 for int, 2 for float, 0 to quit): ");
         scanf("%d", &var[i].type);
 
         switch (var[i].type) {
             case 1:
                 printf("Enter an integer: ");
                 scanf("%d", &var[i].value.intValue);
+                size_arr++;
                 break;
             case 2:
                 printf("Enter a float: ");
                 scanf("%f", &var[i].value.floatValue);
-                break;
-            case 3:
-                printf("Enter a character: ");
-                scanf(" %c", &var[i].value.charValue);
-                break;
-            case 4:
-
+                size_arr++;
+                break;   
+            case 0:
+                check = 0;
                 break;
             default:
                 printf("Unknown type\n");
                 break;
         }
+        if(check != 0){
+        size_arr++;
+        i++;
+        printf("Enter an operator");
+        scanf("%s", var[i].value.operator);;
+        }        
     }
  
 for (int i = 0; i < 3; ++i) {
         switch (var[i].type) {
             case 1:
-                printf("Integer value: %d\n", var[i].value.intValue);
+                printf("%d ", var[i].value.intValue);
                 break;
             case 2:
-                printf("Float value: %.2f\n", var[i].value.floatValue);
+                printf("%.2f ", var[i].value.floatValue);
                 break;
             case 3:
-                printf("Char value: %c\n", var[i].value.charValue);
+                printf("Operator value: %s\n", var[i].value.operator);
                 break;
-            default:
-                printf("Unknown type\n");
-                break;
+            
         }
     }
     
 
-printf("First number:  ");
+/*printf("First number:  ");
 scanf("%d", &num1);
 
 printf("\nmathematical operator(+ , - , * , /) : ");
@@ -88,7 +96,7 @@ scanf("%d", &num2);
 
 //oper(maths, num1, num2);
 
-/*while (check != 0){
+while (check != 0){
     scanf("%d", &check);
     list[i] = check;
     printf("%d", list[i]);
