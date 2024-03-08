@@ -18,7 +18,6 @@ struct MixedVariable {
     union {
         int intValue;
         float floatValue;
-        char operator[MAX_SIZE]; // Array to hold operator string
         } value;
 };
 
@@ -35,41 +34,54 @@ int main(){
     int list[] =  {};
     int check =1;
     int size_arr =0;
-    int i =0;
+    int size_arr2 =0;
+    int i, j =0;
     int temp;
-    struct MixedVariable var[5];
+    struct MixedVariable var[size_arr];
+    char operator[] = {};
 
-for (int i = 0; i < 3; ++i) {
+while (check != 0) {
         printf("Enter the type of variable (1 for int, 2 for float, 0 to quit): ");
         scanf("%d", &var[i].type);
 
         switch (var[i].type) {
             case 1:
-                printf("Enter an integer: ");
+                printf("\nEnter an integer: ");
                 scanf("%d", &var[i].value.intValue);
                 size_arr++;
+                i++;
                 break;
             case 2:
-                printf("Enter a float: ");
+                printf("\nEnter a float: ");
                 scanf("%f", &var[i].value.floatValue);
                 size_arr++;
+                i++;
                 break;   
             case 0:
                 check = 0;
+                var[i].value.intValue = 0;
+                size_arr++;
+                i++;
+
                 break;
             default:
-                printf("Unknown type\n");
+                printf("\nUnknown type\n");
                 break;
         }
         if(check != 0){
-        size_arr++;
-        i++;
-        printf("Enter an operator");
-        scanf("%s", var[i].value.operator);;
+        size_arr2++;
+        printf("\nEnter an operator: ");
+        scanf("%s", &operator[j]);
+        j++;
         }        
+        else{
+            break;
+        }
     }
- 
-for (int i = 0; i < 3; ++i) {
+
+ j = 0; //reset J 
+
+for (i = 0; i < size_arr; i++) {
         switch (var[i].type) {
             case 1:
                 printf("%d ", var[i].value.intValue);
@@ -77,10 +89,11 @@ for (int i = 0; i < 3; ++i) {
             case 2:
                 printf("%.2f ", var[i].value.floatValue);
                 break;
-            case 3:
-                printf("Operator value: %s\n", var[i].value.operator);
-                break;
-            
+        if (j < size_arr2){
+        printf("%c", operator[j]);
+        j++;
+        }    
+
         }
     }
     
